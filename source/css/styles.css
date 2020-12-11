@@ -1,0 +1,231 @@
+body {
+    /*body*/
+}
+.wrapper {
+    margin: 0 auto;
+
+}
+
+.header {
+    background: #205B79;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.header__wrapper {
+    margin: 0 auto;
+    width: 1280px;
+    height: 96px;
+    background: #205B79;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.header__title {
+    margin-left: 35px;
+    padding-top: 30px;
+    font-family: 'Cabin', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 36px;
+    margin-top: 0;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.header__logo {
+    padding-top: 20px;
+    margin-left: auto;
+    margin-right: 15px;
+    float: right;
+}
+
+.header__team {
+    padding-top: 36px;
+    margin-top: 0;
+    margin-right: 54px;
+    font-family: 'Cabin', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #FFFFFF;
+}
+
+.navigator {
+}
+
+.navigator__wrapper {
+    background: #6AB1C7;
+    height: 624px;
+    width: 220px;
+}
+
+.navigator__list {
+    margin: 0;
+    padding-top: 24px;
+    padding-left: 0;
+}
+
+.navigator__item {
+    list-style-type: none;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.navigator__item:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.navigator__item--active {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.navigator__link {
+    font-family: 'Cabin', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 36px;
+    color: #FFFFFF;
+    text-decoration: none;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    background: #F5F5F5;
+    margin: 0 auto;
+    display: flex;
+    width: 1280px;
+}
+
+.main__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.current-table {
+    width: 400px;
+    height: 300px;
+    margin-left: 35px;
+    margin-top: 35px;
+}
+
+.optimal-table__header,
+.current-table__header {
+    font-family: 'Cabin', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 36px;
+    text-transform: uppercase;
+    color: #47565F;
+    margin-bottom: 12px;
+    margin-top: 20px;
+    padding-left: 35px;
+    padding-right: 35px;
+    text-align: center;
+}
+
+.optimal-table__header::after,
+.current-table__header::after {
+    content: "";
+    display: block;
+    height: 12px;
+    width: 100%;
+    background: #ACBDC6;
+    border-radius: 5px;
+}
+
+.optimal-table__list,
+.current-table__list {
+    position: relative;
+    padding: 0;
+}
+
+.optimal-table__list::before,
+.current-table__list::before {
+    position: absolute;
+    content: "";
+    margin-left: 43%;
+    top: 98px;
+    display: inline-block;
+    background: #ABBDC7;
+    transform: rotate(-90deg);
+    width: 198px;
+    height: 3px;
+}
+
+.optimal-table__item,
+.current-table__item {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    height: 42px;
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-bottom: 10px;
+}
+
+.optimal-table__item:nth-child(odd),
+.current-table__item:nth-child(odd) {
+    background: #E6EBEF;
+}
+
+.optimal-table__item:nth-child(even),
+.current-table__item:nth-child(even) {
+    background: #F7F8FA;
+}
+
+.optimal-table__parameter,
+.current-table__parameter {
+    font-family: 'Cabin', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    padding-left: 10px;
+    color: #25323F;
+
+}
+
+.optimal-table__value,
+.current-table__value {
+    margin-left: auto;
+    font-family: 'Cabin', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    color: #25323F;
+    padding-right: 10px;
+}
+
+.current-table__bad-value {
+    color: red;
+}
+
+.optimal-table {
+    width: 493px;
+    height: 300px;
+    background: #FFFFFF;
+    margin-top: 35px;
+    margin-left: 67px;
+}
+
+.main__graph {
+    width: 960px;
+    height: 228px;
+    margin-left: 50px;
+    border: 1px solid black;
+}
