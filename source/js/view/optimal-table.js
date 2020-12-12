@@ -9,22 +9,22 @@ const createOptimalTable = (data) => {
     } = data;
 
     return `<section class="main__optimal-table optimal-table">
-                <h1 class="optimal-table__header">оптимальные значения</h1>
+                <h1 class="optimal-table__header">рекомендации*  <span class="optimal-table__header-tooltip"> *рекомендации для максимизации урожая, основанные на вычисленных оптимальных условиях</span></h1>
                 <ul class="optimal-table__list">
                     <li class="optimal-table__item">
-                        <p class="optimal-table__parameter">температура</p>
+                        <p class="optimal-table__parameter">увеличить на</p>
                         <p class="optimal-table__value">${optimalTemperature}</p>
                     </li>
                     <li class="optimal-table__item">
-                        <p class="optimal-table__parameter">уровень освещения</p>
+                        <p class="optimal-table__parameter">уменьшить на</p>
                         <p class="optimal-table__value">${optimalLightingLevel}</p>
                     </li>
                     <li class="optimal-table__item">
-                        <p class="optimal-table__parameter">влажность почвы</p>
+                        <p class="optimal-table__parameter">значение оптимально</p>
                         <p class="optimal-table__value">${optimalSoilMoisture}</p>
                     </li>
                     <li class="current-table__item">
-                        <p class="optimal-table__parameter">кислотность почвы</p>
+                        <p class="optimal-table__parameter">увеличить на</p>
                         <p class="optimal-table__value">${optimalSoilAcidity}</p>
                     </li>
                 </ul>

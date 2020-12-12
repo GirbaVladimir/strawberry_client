@@ -3,7 +3,6 @@ body {
 }
 .wrapper {
     margin: 0 auto;
-
 }
 
 .header {
@@ -59,7 +58,7 @@ body {
 
 .navigator__wrapper {
     background: #6AB1C7;
-    height: 624px;
+    height: 700px;
     width: 220px;
 }
 
@@ -117,7 +116,7 @@ body {
 .current-table {
     width: 400px;
     height: 300px;
-    margin-left: 35px;
+    margin-left: 100px;
     margin-top: 35px;
 }
 
@@ -134,7 +133,7 @@ body {
     margin-top: 20px;
     padding-left: 35px;
     padding-right: 35px;
-    text-align: center;
+    position: relative;
 }
 
 .optimal-table__header::after,
@@ -211,21 +210,94 @@ body {
     padding-right: 10px;
 }
 
+.current-table__warning-value {
+    color: orange;
+}
+
 .current-table__bad-value {
     color: red;
 }
 
 .optimal-table {
-    width: 493px;
+    width: 400px;
     height: 300px;
-    background: #FFFFFF;
     margin-top: 35px;
-    margin-left: 67px;
+    margin-left: 20px;
+}
+
+.optimal-table__header-tooltip {
+    visibility: hidden;
+    position: absolute;
+    top: 40px;
+    left: 36px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s;
+    font-family: 'Cabin', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    background: #6AB1C7;
+    color: #FFFFFF;
+    text-transform: none;
+    width: 280px;
+    padding: 8px;
+}
+
+.optimal-table__header:hover .optimal-table__header-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.optimal-table__header:hover .optimal-table__header-tooltip::after {
+    content: " ";
+    position: absolute;
+    bottom: 99%;  /* At the top of the tooltip */
+    left: 87%;
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #6AB1C7 transparent;
 }
 
 .main__graph {
     width: 960px;
-    height: 228px;
-    margin-left: 50px;
-    border: 1px solid black;
+    height: 300px;
+    margin-left: 40px;
+    position: relative;
+}
+
+.main__graph-next-arrow {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: rotate(180deg);
+}
+
+
+
+.main__graph-prew-arrow {
+    position: absolute;
+    top: 50%;
+    left: -10px;
+}
+
+.main__graph-prew-arrow::before,
+.main__graph-next-arrow::before {
+    content: "";
+    background-image: url("../img/arrow.svg");
+    width: 35px;
+    height: 60px;
+    display: block;
+}
+
+.main__graph-next-arrow:hover::before,
+.main__graph-prew-arrow:hover::before{
+    background-image: url("../img/arrow-hover.svg");
+}
+
+.main__graph-next-arrow:active::before,
+.main__graph-prew-arrow:active::before{
+    background-image: url("../img/arrow-active.svg");
 }
