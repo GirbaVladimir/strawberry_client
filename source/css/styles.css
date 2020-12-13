@@ -1,5 +1,6 @@
 body {
-    /*body*/
+    margin: 0;
+    padding: 0;
 }
 .wrapper {
     margin: 0 auto;
@@ -7,6 +8,8 @@ body {
 
 .header {
     background: #205B79;
+    margin: 0;
+    padding: 0;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
@@ -210,10 +213,6 @@ body {
     padding-right: 10px;
 }
 
-.current-table__warning-value {
-    color: orange;
-}
-
 .current-table__bad-value {
     color: red;
 }
@@ -275,8 +274,6 @@ body {
     transform: rotate(180deg);
 }
 
-
-
 .main__graph-prew-arrow {
     position: absolute;
     top: 50%;
@@ -300,4 +297,142 @@ body {
 .main__graph-next-arrow:active::before,
 .main__graph-prew-arrow:active::before{
     background-image: url("../img/arrow-active.svg");
+}
+
+.summary {
+    position: relative;
+    width: 1050px;
+}
+
+.summary__header {
+    font-family: 'Cabin', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 44px;
+    color: #205B79;
+    margin-left: 30px;
+    margin-bottom: 41px;
+}
+
+.summary__future,
+.summary__now {
+    font-family: 'Cabin', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    margin-left: 30px;
+    margin-bottom: 15px;
+
+    color: #0E2936;
+}
+
+.summary__economy {
+    position: absolute;
+    display: block;
+    font-family: 'Cabin', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    top: 95px;
+    left: 625px;
+
+    color: #2B424E;
+
+}
+
+.summary__economy span {
+    position: absolute;
+    display: block;
+    font-family: 'Cabin', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    top: -5px;
+    font-size: 30px;
+    line-height: 35px;
+
+    color: #357A44;
+    left: 346px;
+}
+
+.summary__anomaly {
+    position: absolute;
+    font-family: 'Cabin', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    margin-left: 30px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+
+     color: #000000;
+}
+
+.summary__anomaly span {
+    position: relative;
+    top: -22px;
+    font-family: 'Cabin', sans-serif;
+    display: block;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    margin-left: 230px;
+
+    color: #DF0000;
+
+}
+
+.summary__sensors {
+    position: absolute;
+    font-family: 'Cabin', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    top: 140px;
+    left: 625px;
+    color: #2B424E;
+}
+
+.summary__sensors span{
+    color: #205E2D;
+}
+
+.summary__call-bandito {
+    position: absolute;
+    left: 680px;
+    top: 336px;
+    width: 420px;
+    height: 40px;
+    left: 625px;
+    top: 195px;
+    background: #6AB1C7;
+    border: 0;
+    border-radius: 5px;
+
+    font-family: 'Cabin', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #FFFFFF;
+}
+
+.photo {
+    position: absolute;
+    top: 377px;
+    left: 90px;
+}
+
+.canvaes {
+    position: absolute;
+    top: 277px;
+    left: 134px;
+    width: 800px;
+    height: 500px;
 }

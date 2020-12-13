@@ -1,32 +1,7 @@
 import {createElement} from "../util";
 
-const checkBadTemperature = (val) => {
-    if (val <= 0 || val >= 100) {
-        return `current-table__bad-value`;
-    }
-    return ``;
-}
-
-const checkBadLightingLevel = (val) => {
-    if (val <= 2 || val >= 50) {
-        return `current-table__bad-value`;
-    }
-    return ``;
-}
-
-const checkBadSoilMoisture = (val) => {
-    val = parseInt(val, 10);
-    if (val <= 30 || val >= 70) {
-        return `current-table__bad-value`;
-    }
-    return ``;
-}
-
-const checkBadSoilAcidity = (val) => {
-    if (val <= 0 || val >= 10) {
-        return `current-table__bad-value`;
-    }
-    return ``;
+const сheckNone = (value) => {
+    return value == 256 ? `-` : value
 }
 
 const createCurrentTable = (data) => {
@@ -34,27 +9,31 @@ const createCurrentTable = (data) => {
         currentTemperature,
         currentLightingLevel,
         currentSoilMoisture,
-        currentSoilAcidity
+        currentSoilAcidity,
+        isTemperatureAnomal,
+        isLightingLevelAnomal,
+        isSoilMoistureAnomal,
+        isSoilAcidityAnomal
     } = data;
 
     return `<section class="main__current-table current-table">
                 <h1 class="current-table__header">текущие значения</h1>
                 <ul class="current-table__list">
                     <li class="current-table__item">
-                        <p class="current-table__parameter ${checkBadTemperature(currentTemperature)}">температура</p>
-                        <p class="current-table__value ${checkBadTemperature(currentTemperature)}">${currentTemperature}</p>
+                        <p class="current-table__parameter ${(isTemperatureAnomal === `True`) ? `current-table__bad-value` : ``}">температура</p>
+                        <p class="current-table__value ${(isTemperatureAnomal === `True`) ? `current-table__bad-value` : ``}">${сheckNone(Math.floor(currentTemperature))}</p>
                     </li>
                     <li class="current-table__item">
-                        <p class="current-table__parameter ${checkBadLightingLevel(currentLightingLevel)}">уровень освещения</p>
-                        <p class="current-table__value ${checkBadLightingLevel(currentLightingLevel)}">${currentLightingLevel}</p>
+                        <p class="current-table__parameter ${(isLightingLevelAnomal  === `True`) ? `current-table__bad-value` : ``}">уровень освещения</p>
+                        <p class="current-table__value ${(isLightingLevelAnomal === `True`) ? `current-table__bad-value` : ``}">${сheckNone(Math.floor(currentLightingLevel))}</p>
                     </li>
                     <li class="current-table__item">
-                        <p class="current-table__parameter ${checkBadSoilMoisture(currentSoilMoisture)}">влажность почвы</p>
-                        <p class="current-table__value ${checkBadSoilMoisture(currentSoilMoisture)}">${currentSoilMoisture}</p>
+                        <p class="current-table__parameter ${(isSoilMoistureAnomal === `True`) ? `current-table__bad-value` : ``}">влажность почвы</p>
+                        <p class="current-table__value ${(isSoilMoistureAnomal === `True`) ? `current-table__bad-value` : ``}">${сheckNone(Math.floor(currentSoilMoisture))}</p>
                     </li>
                     <li class="current-table__item">
-                        <p class="current-table__parameter ${checkBadSoilAcidity(currentSoilAcidity)}">кислотность почвы</p>
-                        <p class="current-table__value ${checkBadSoilAcidity(currentSoilAcidity)}">${currentSoilAcidity}</p>
+                        <p class="current-table__parameter ${(isSoilAcidityAnomal === `True`) ? `current-table__bad-value` : ``}">кислотность почвы</p>
+                        <p class="current-table__value ${(isSoilAcidityAnomal === `True`) ? `current-table__bad-value` : ``}">${сheckNone(Math.floor(currentSoilAcidity))}</p>
                     </li>
                 </ul>
             </section>`;

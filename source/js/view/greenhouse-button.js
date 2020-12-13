@@ -2,7 +2,7 @@ import {createElement} from "../util";
 
 const createGreenHouseButton = (value) => {
     return `<li class="navigator__item" data-value="${value}">
-        <a class="navigator__link" href="#${value}" >теплица ${value}</a>
+        <a class="navigator__link" href="#${value}">теплица ${value}</a>
      </li>`
 };
 

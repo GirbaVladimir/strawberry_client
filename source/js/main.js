@@ -7,35 +7,56 @@ import {createGraph} from "./view/graph";
 import {backendGet} from "./backend-connection"
 const Chart = require('chart.js');
 import {fillGraph} from "./view/graph";
+import {createMainPage, fillMainGraph} from "./view/main-page";
 
-const mocks = {data: [{
-    currentTemperature: 30,
-    currentLightingLevel: 3,
-    currentSoilMoisture: `60%`,
-    currentSoilAcidity: 5,
-    optimalTemperature: 10,
-    optimalLightingLevel: 3000,
-    optimalSoilMoisture: `60%`,
-    optimalSoilAcidity: 7
-}, {
-    currentTemperature: 13,
-    currentLightingLevel: 2000,
-    currentSoilMoisture: `10%`,
-    currentSoilAcidity: 2,
-    optimalTemperature: 30,
-    optimalLightingLevel: 11,
-    optimalSoilMoisture: `65%`,
-    optimalSoilAcidity: 7
-}, {
-    currentTemperature: 100,
-    currentLightingLevel: 3,
-    currentSoilMoisture: `60%`,
-    currentSoilAcidity: 11,
-    optimalTemperature: 10,
-    optimalLightingLevel: 3000,
-    optimalSoilMoisture: `60%`,
-    optimalSoilAcidity: 7
-}]};
+const mocks = {'data': [{'currentLightingLevel': 81.48914445107826,
+        'currentSoilAcidity': 7.264549131299785,
+        'currentSoilMoisture': 0.0,
+        'currentTemperature': 13.1,
+        'isLightingLevelAnomal': false,
+        'isSoilAcidityAnomal': true,
+        'isSoilMoistureAnomal': true,
+        'isTemperatureAnomal': false,
+        'optimalLightingLevel': -68.68644032771549,
+        'optimalSoilAcidity': 0.0,
+        'optimalSoilMoisture': -2.5848154402294483,
+        'optimalTemperature': 14.755555555555555},
+        {'currentLightingLevel:': 76.96152709453443,
+            'currentSoilAcidity:': 6.391726066122582,
+            'currentSoilMoisture:': 107.16860313853279,
+            'currentTemperature:': -9.7,
+            'isLightingLevelAnomal': false,
+            'isSoilAcidityAnomal': false,
+            'isSoilMoistureAnomal': true,
+            'isTemperatureAnomal': false,
+            'optimalLightingLevel:': -64.15882297117166,
+            'optimalSoilAcidity:': 0.0,
+            'optimalSoilMoisture:': -109.75341857876224,
+            'optimalTemperature:': 37.55555555555556},
+        {'currentLightingLevel:': 82.56174974758258,
+            'currentSoilAcidity:': 6.39691860952955,
+            'currentSoilMoisture:': 93.32290660538986,
+            'currentTemperature:': 10.4,
+            'isLightingLevelAnomal': true,
+            'isSoilAcidityAnomal': false,
+            'isSoilMoistureAnomal': true,
+            'isTemperatureAnomal': false,
+            'optimalLightingLevel:': -69.75904562421981,
+            'optimalSoilAcidity:': 0.0,
+            'optimalSoilMoisture:': -95.90772204561931,
+            'optimalTemperature:': 17.455555555555556},
+        {'currentLightingLevel:': 96.37611126090174,
+            'currentSoilAcidity:': 6.532336548626914,
+            'currentSoilMoisture:': 0.0,
+            'currentTemperature:': 14.9,
+            'isLightingLevelAnomal': false,
+            'isSoilAcidityAnomal': true,
+            'isSoilMoistureAnomal': true,
+            'isTemperatureAnomal': false,
+            'optimalLightingLevel:': -83.57340713753896,
+            'optimalSoilAcidity:': 0.0,
+            'optimalSoilMoisture:': -2.5848154402294483,
+            'optimalTemperature:': 12.955555555555554}]};
 
 const graphMock = {
     temperatures: [30, 120, -30, 10, 40, NaN, 120, -30, 10, 40, 30, 120, -30, 10, 40, 30, 120, -30, 10, 40, 30, 120, -30, 10, 40, 30, 120, -30, 10, 40],
@@ -53,23 +74,28 @@ const renderMainContainer = (data) => {
     render(mainContainer, new OptimalTable(data).getElement(), RenderPosition.BEFOREEND);
     renderTemplate(mainContainer, createGraph(), RenderPosition.BEFOREEND);
 
-    console.log(document.querySelector(`.navigator__item--active`).dataset.value);
-
-    backendGet(`https://21.javascript.pages.academy/keksobooking/data`)
+    backendGet(`http://kater.fun:1515/greenhouse/${document.querySelector(`.navigator__item--active`).dataset.value}`)
         .then(
-            response => renderGraph(graphMock),
+            response => renderGraph(response),
             error => alert(`Rejected: ${error}`)
         );
 };
 
-const addGreenhousesHandlers = () => {
+const addGreenhousesHandlers = (data) => {
     const greenhousesButtons = document.querySelectorAll(`.navigator__item`);
 
     greenhousesButtons.forEach((button) => {
         button.addEventListener(`click`, () => {
             disableAllActiveGreenhousesButtons();
             button.classList.add(`navigator__item--active`);
-            renderMainContainer(mocks.data[button.dataset.value - 1]);
+            if (button.dataset.value == 0) {
+                const mainContainer = document.querySelector(`.main__wrapper`);
+                mainContainer.innerHTML = ``;
+                renderTemplate(document.querySelector(`.main__wrapper`), createMainPage(), RenderPosition.BEFOREEND);
+                fillMainGraph();
+            } else {
+                renderMainContainer(data[button.dataset.value - 1]);
+            }
         });
     });
 };
@@ -83,9 +109,9 @@ const disableAllActiveGreenhousesButtons = () => {
 };
 
 const initializePage = () => {
-    backendGet(`https://21.javascript.pages.academy/keksobooking/data`)
+    backendGet(`http://kater.fun:1515/getoptimaldata`)
         .then(
-            response => renderGreenhouses(mocks.data), // response
+            response => renderGreenhouses(response.data), //
             error => alert(`Rejected: ${error}`)
         );
 };
@@ -97,12 +123,9 @@ const renderGreenhouses = (data) => {
         render(navigatorList, new GreenHouseButton(i).getElement(), RenderPosition.BEFOREEND);
     }
 
-    if (document.querySelector(`.navigator__item`)) {
-        document.querySelector(`.navigator__item`).classList.add(`navigator__item--active`);
-    }
-
-    renderMainContainer(data[0]);
-    addGreenhousesHandlers();
+    renderTemplate(document.querySelector(`.main__wrapper`), createMainPage(), RenderPosition.BEFOREEND)
+    fillMainGraph();
+    addGreenhousesHandlers(data);
 };
 
 const renderGraph = (graphDate) => {
@@ -120,9 +143,8 @@ const renderGraph = (graphDate) => {
 
         switch (currentGraph) {
             case 0:
-                updateConfigByMutating(chart, graphDate.lightingLevels, `Уровень освещения`, `rgba(255, 230, 0, 0.3)`);
+                updateConfigByMutating(chart, graphDate.lightningLevels,  `Уровень освещения`, `rgba(255, 230, 0, 0.3)`);
                 currentGraph++;
-                console.log(1);
                 break;
             case 1:
                 updateConfigByMutating(chart, graphDate.soilMoisture, `Влажность почвы`, `rgba(61, 173, 255, 0.3)`);
@@ -151,7 +173,7 @@ const renderGraph = (graphDate) => {
                 currentGraph--;
                 break;
             case 2:
-                updateConfigByMutating(chart, graphDate.lightingLevels, `Уровень освещения`, `rgba(255, 230, 0, 0.3)`);
+                updateConfigByMutating(chart, graphDate.lightningLevels, `Уровень освещения`, `rgba(255, 230, 0, 0.3)`);
                 currentGraph--;
                 break;
             case 3:
