@@ -158,7 +158,7 @@ const renderGraph = (graphDate) => {
                 updateConfigByMutating(chart, graphDate.temperatures, `Температура`, `rgba(88, 252, 222, 0.3)`);
                 currentGraph = 0;
                 break;
-        };
+        }
     });
 
     document.querySelector(`.main__graph-prew-arrow`).addEventListener(`click`, () => {
@@ -180,7 +180,7 @@ const renderGraph = (graphDate) => {
                 updateConfigByMutating(chart, graphDate.soilMoisture, `Влажность почвы`, `rgba(61, 173, 255, 0.3)`);
                 currentGraph--;
                 break;
-        };
+        }
     });
 };
 

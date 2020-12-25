@@ -61,5 +61,5 @@ export default class CurrentTable {
     removeElement() {
         this._element = null;
     }
-};
+}
 

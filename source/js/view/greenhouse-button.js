@@ -28,4 +28,4 @@ export default class GreenHouseButton {
     removeElement() {
         this._element = null;
     }
-};
+}

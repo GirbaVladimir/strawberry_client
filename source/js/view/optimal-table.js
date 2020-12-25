@@ -75,5 +75,5 @@ export default class OptimalTable {
     removeElement() {
         this._element = null;
     }
-};
+}
 
