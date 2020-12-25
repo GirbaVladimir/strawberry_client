@@ -7,7 +7,7 @@ export const createMainPage = () => {
                 <p class="summary__future">Объем урожая при оптимальных условиях - 13</p>
                 <p class="summary__economy">Экономический эффект составляет: <span>18%</span></p>
                 <p class="summary__anomaly">Аномалии в теплицах: <span>1, 4</span></p>
-                <p class="summary__sensors">Состояние датчиков: <span>удовлетвотворительное</span></p>
+                <p class="summary__sensors">Состояние датчиков: <span>удовлетворительное</span></p>
                 <button class="summary__call-bandito">вызвать инженеров</button>
                 <div class="canvaes">
                     <canvas id="myChart" width="200" height="100" class="graph"></canvas>

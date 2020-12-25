@@ -132,11 +132,11 @@ const renderGraph = (graphDate) => {
     const chart = fillGraph(graphDate.temperatures, graphDate.date);
     let currentGraph = 0;
 
-    function updateConfigByMutating(chart, res, title, color) {
-        chart.data.datasets[0].data = res;
-        chart.data.datasets[0].label = title;
-        chart.data.datasets[0].backgroundColor = color;
-        chart.update();
+    function updateConfigByMutating(chartToUpdate, res, title, color) {
+        chartToUpdate.data.datasets[0].data = res;
+        chartToUpdate.data.datasets[0].label = title;
+        chartToUpdate.data.datasets[0].backgroundColor = color;
+        chartToUpdate.update();
     }
 
     document.querySelector(`.main__graph-next-arrow`).addEventListener(`click`, () => {

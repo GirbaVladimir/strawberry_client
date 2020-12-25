@@ -56,9 +56,6 @@ body {
     color: #FFFFFF;
 }
 
-.navigator {
-}
-
 .navigator__wrapper {
     background: #6AB1C7;
     height: 700px;
@@ -404,8 +401,6 @@ body {
 
 .summary__call-bandito {
     position: absolute;
-    left: 680px;
-    top: 336px;
     width: 420px;
     height: 40px;
     left: 625px;
